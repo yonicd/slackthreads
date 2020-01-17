@@ -3,7 +3,7 @@ library(threads)
 library(magrittr)
 library(ggplot2)
 
-source('r4ds/tidy_convo.R')
+source('data-raw/r4ds/tidy_convo.R')
 
 ## Set up Team ----
 
