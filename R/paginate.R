@@ -5,14 +5,22 @@
 #' @param channel PARAM_DESCRIPTION
 #' @return OUTPUT_DESCRIPTION
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
 #' @rdname paginate.conversation
-#' @export 
+#' @export
+paginate <- function(root,...,channel){
+
+  UseMethod('paginate')
+
+}
+
+
+#' @export
 paginate.conversation <- function(root,...,channel){
 
   cont <- TRUE
@@ -32,20 +40,7 @@ paginate.conversation <- function(root,...,channel){
 }
 
 
-#' @title FUNCTION_TITLE
-#' @description FUNCTION_DESCRIPTION
-#' @param root PARAM_DESCRIPTION
-#' @param ... PARAM_DESCRIPTION
-#' @return OUTPUT_DESCRIPTION
-#' @details DETAILS
-#' @examples 
-#' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
-#' }
-#' @rdname paginate.reply
-#' @export 
+#' @export
 paginate.reply <- function(root,...){
 
   cont <- TRUE
