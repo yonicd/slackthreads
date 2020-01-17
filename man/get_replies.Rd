@@ -2,7 +2,7 @@
 % Please edit documentation in R/replies.R
 \name{get_replies}
 \alias{get_replies}
-\title{GET Conversation Thread}
+\title{POST Conversation Thread}
 \usage{
 get_replies(ts, ..., channel = Sys.getenv("SLACK_CHANNEL"),
   api_token = Sys.getenv("SLACK_API_TOKEN"))
@@ -10,7 +10,7 @@ get_replies(ts, ..., channel = Sys.getenv("SLACK_CHANNEL"),
 \arguments{
 \item{ts}{character, Unique identifier of a thread's parent message}
 
-\item{...}{arguments to pass to GET call}
+\item{...}{arguments to pass to POST call}
 
 \item{channel}{character, channel name, Default: Sys.getenv("SLACK_CHANNEL")}
 
@@ -26,8 +26,4 @@ while conversations.history method returns only parent messages.
 }
 \details{
 See \href{https://api.slack.com/methods/conversations.replies}{Slack Documentation} for more details.
-}
-\seealso{
-\link[slackteams:get_team_channels]{get_team_channels}
-\link[httr:POST]{POST}, \link[httr:warn_for_status]{warn_for_status}, \link[httr:content]{content}
 }

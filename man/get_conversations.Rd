@@ -2,13 +2,13 @@
 % Please edit documentation in R/conversations.R
 \name{get_conversations}
 \alias{get_conversations}
-\title{GET Channel Conversation}
+\title{POST Channel Conversation}
 \usage{
 get_conversations(..., channel = Sys.getenv("SLACK_CHANNEL"),
   api_token = Sys.getenv("SLACK_API_TOKEN"))
 }
 \arguments{
-\item{...}{PARAM_DESCRIPTION}
+\item{...}{arguments to pass to POST call}
 
 \item{channel}{character, Conversation ID to fetch history for, Default: Sys.getenv("SLACK_CHANNEL")}
 
@@ -25,15 +25,4 @@ of channel-like object you're working with.
 To use the method, you'll need at least one of the channels,
 groups, im or mpim scopes corresponding to the conversation
 type you're working with. See \href{https://api.slack.com/methods/conversations.history}{Slack Documentation} for more details.
-}
-\examples{
-\dontrun{
-if(interactive()){
- #EXAMPLE1
- }
-}
-}
-\seealso{
-\link[slackteams:get_team_channels]{get_team_channels}
-\link[httr:POST]{POST}, \link[httr:warn_for_status]{warn_for_status}, \link[httr:content]{content}
 }

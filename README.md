@@ -20,13 +20,11 @@ remotes::install_github("yonicd/threads")
 
 ## In the Tin
 
-  - Slack API GET for
+  - httr call for Slack API
     [conversation.history](https://api.slack.com/methods/conversations.history)
-  - Slack API GET for
+  - httr call for Slack API
     [conversation.replies](https://api.slack.com/methods/conversations.replies)
-  - Pagination Methods for both
-
-More to come ….
+  - Pagination Functions
 
 ## Example Using [R4DS Slack](https://www.rfordatasci.com/)
 
@@ -61,7 +59,7 @@ question_channels
 
 ### Retrieve Conversations
 
-This will GET the first 20 messages from each channel
+This will retrieve the last 20 messages from each channel
 
 ``` r
 
