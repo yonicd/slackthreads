@@ -1,21 +1,24 @@
-#' @title FUNCTION_TITLE
-#' @description FUNCTION_DESCRIPTION
+#' @title GET Channel Conversation
+#' @description  Conversations API method's required scopes depend on the type
+#'  of channel-like object you're working with.
 #' @param ... PARAM_DESCRIPTION
-#' @param channel PARAM_DESCRIPTION, Default: Sys.getenv("SLACK_CHANNEL")
-#' @param api_token PARAM_DESCRIPTION, Default: Sys.getenv("SLACK_API_TOKEN")
-#' @return OUTPUT_DESCRIPTION
-#' @details DETAILS
-#' @examples 
+#' @param channel character, Conversation ID to fetch history for, Default: Sys.getenv("SLACK_CHANNEL")
+#' @param api_token character, full Slack API token, Default: Sys.getenv("SLACK_API_TOKEN")
+#' @return A [response][httr::response] object containing channel messages with the class "conversation"
+#' @details To use the method, you'll need at least one of the channels,
+#'  groups, im or mpim scopes corresponding to the conversation
+#'  type you're working with. See [Slack Documentation](https://api.slack.com/methods/conversations.history) for more details.
+#' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
-#' @seealso 
+#' @seealso
 #'  [get_team_channels][slackteams::get_team_channels]
 #'  [POST][httr::POST], [warn_for_status][httr::warn_for_status], [content][httr::content]
 #' @rdname get_conversations
-#' @export 
+#' @export
 #' @importFrom slackteams get_team_channels
 #' @importFrom httr POST warn_for_status content
 get_conversations <- function(...,channel=Sys.getenv("SLACK_CHANNEL"),api_token=Sys.getenv("SLACK_API_TOKEN")) {

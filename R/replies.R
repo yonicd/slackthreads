@@ -1,22 +1,18 @@
-#' @title FUNCTION_TITLE
-#' @description FUNCTION_DESCRIPTION
-#' @param ts PARAM_DESCRIPTION
-#' @param ... PARAM_DESCRIPTION
-#' @param channel PARAM_DESCRIPTION, Default: Sys.getenv("SLACK_CHANNEL")
-#' @param api_token PARAM_DESCRIPTION, Default: Sys.getenv("SLACK_API_TOKEN")
-#' @return OUTPUT_DESCRIPTION
-#' @details DETAILS
-#' @examples 
-#' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
-#' }
-#' @seealso 
+#' @title GET Conversation Thread
+#' @description Conversations API method returns an entire thread
+#' (a message plus all the messages in reply to it),
+#' while conversations.history method returns only parent messages.
+#' @param ts character, Unique identifier of a thread's parent message
+#' @param ... arguments to pass to GET call
+#' @param channel character, channel name, Default: Sys.getenv("SLACK_CHANNEL")
+#' @param api_token character, full Slack API token, Default: Sys.getenv("SLACK_API_TOKEN")
+#' @return A [response][httr::response] object containing thread messages with the class "reply"
+#' @details See [Slack Documentation](https://api.slack.com/methods/conversations.replies) for more details.
+#' @seealso
 #'  [get_team_channels][slackteams::get_team_channels]
 #'  [POST][httr::POST], [warn_for_status][httr::warn_for_status], [content][httr::content]
 #' @rdname get_replies
-#' @export 
+#' @export
 #' @importFrom slackteams get_team_channels
 #' @importFrom httr POST warn_for_status content
 get_replies <- function(ts,...,channel=Sys.getenv("SLACK_CHANNEL"),api_token=Sys.getenv("SLACK_API_TOKEN")) {

@@ -2,35 +2,30 @@
 % Please edit documentation in R/replies.R
 \name{get_replies}
 \alias{get_replies}
-\title{FUNCTION_TITLE}
+\title{GET Conversation Thread}
 \usage{
 get_replies(ts, ..., channel = Sys.getenv("SLACK_CHANNEL"),
   api_token = Sys.getenv("SLACK_API_TOKEN"))
 }
 \arguments{
-\item{ts}{PARAM_DESCRIPTION}
+\item{ts}{character, Unique identifier of a thread's parent message}
 
-\item{...}{PARAM_DESCRIPTION}
+\item{...}{arguments to pass to GET call}
 
-\item{channel}{PARAM_DESCRIPTION, Default: Sys.getenv("SLACK_CHANNEL")}
+\item{channel}{character, channel name, Default: Sys.getenv("SLACK_CHANNEL")}
 
-\item{api_token}{PARAM_DESCRIPTION, Default: Sys.getenv("SLACK_API_TOKEN")}
+\item{api_token}{character, full Slack API token, Default: Sys.getenv("SLACK_API_TOKEN")}
 }
 \value{
-OUTPUT_DESCRIPTION
+A \link[httr:response]{response} object containing thread messages with the class "reply"
 }
 \description{
-FUNCTION_DESCRIPTION
+Conversations API method returns an entire thread
+(a message plus all the messages in reply to it),
+while conversations.history method returns only parent messages.
 }
 \details{
-DETAILS
-}
-\examples{
-\dontrun{
-if(interactive()){
- #EXAMPLE1
- }
-}
+See \href{https://api.slack.com/methods/conversations.replies}{Slack Documentation} for more details.
 }
 \seealso{
 \link[slackteams:get_team_channels]{get_team_channels}

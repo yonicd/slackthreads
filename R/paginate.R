@@ -1,19 +1,12 @@
-#' @title FUNCTION_TITLE
-#' @description FUNCTION_DESCRIPTION
-#' @param root PARAM_DESCRIPTION
-#' @param ... PARAM_DESCRIPTION
-#' @param channel PARAM_DESCRIPTION
-#' @return OUTPUT_DESCRIPTION
-#' @details DETAILS
-#' @examples
-#' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
-#' }
-#' @rdname paginate.conversation
+#' @title Pagination
+#' @description Paginating through collections of messages and replies.
+#' @param parent conversation or reply class object
+#' @param ... arguments to pass to get_conversation or get_reply
+#' @return list of [response][httr::response] objects containing channel messages or thread messages
+#' @details See [Slack Documentation](https://api.slack.com/docs/pagination) for more details.
+#' @rdname paginate
 #' @export
-paginate <- function(root,...,channel){
+paginate <- function(parent,...){
 
   UseMethod('paginate')
 
@@ -21,16 +14,16 @@ paginate <- function(root,...,channel){
 
 
 #' @export
-paginate.conversation <- function(root,...,channel){
+paginate.conversation <- function(parent,...){
 
   cont <- TRUE
   output <- list()
-  output[[1]] <- root
+  output[[1]] <- parent
   i <- 1
 
   while(cont){
     this_cursor <- output[[i]]$response_metadata$next_cursor
-    this <- get_conversations(..., channel = attr(root,'channel'), cursor =  this_cursor)
+    this <- get_conversations(..., channel = attr(parent,'channel'), cursor =  this_cursor)
     output <- append(output,list(this))
     i <- i+1
     cont <- output[[i]]$has_more
@@ -41,16 +34,16 @@ paginate.conversation <- function(root,...,channel){
 
 
 #' @export
-paginate.reply <- function(root,...){
+paginate.reply <- function(parent,...){
 
   cont <- TRUE
   output <- list()
-  output[[1]] <- root
+  output[[1]] <- parent
   i <- 1
 
   while(cont){
     this_cursor <- output[[i]]$response_metadata$next_cursor
-    this <- get_replies(ts = attr(root,'ts'), ..., channel =  attr(root,'channel'),cursor =  this_cursor)
+    this <- get_replies(ts = attr(parent,'ts'), ..., channel =  attr(parent,'channel'),cursor =  this_cursor)
     output <- append(output,list(this))
     i <- i+1
     cont <- output[[i]]$has_more

@@ -2,7 +2,7 @@
 % Please edit documentation in R/conversations.R
 \name{get_conversations}
 \alias{get_conversations}
-\title{FUNCTION_TITLE}
+\title{GET Channel Conversation}
 \usage{
 get_conversations(..., channel = Sys.getenv("SLACK_CHANNEL"),
   api_token = Sys.getenv("SLACK_API_TOKEN"))
@@ -10,18 +10,21 @@ get_conversations(..., channel = Sys.getenv("SLACK_CHANNEL"),
 \arguments{
 \item{...}{PARAM_DESCRIPTION}
 
-\item{channel}{PARAM_DESCRIPTION, Default: Sys.getenv("SLACK_CHANNEL")}
+\item{channel}{character, Conversation ID to fetch history for, Default: Sys.getenv("SLACK_CHANNEL")}
 
-\item{api_token}{PARAM_DESCRIPTION, Default: Sys.getenv("SLACK_API_TOKEN")}
+\item{api_token}{character, full Slack API token, Default: Sys.getenv("SLACK_API_TOKEN")}
 }
 \value{
-OUTPUT_DESCRIPTION
+A \link[httr:response]{response} object containing channel messages with the class "conversation"
 }
 \description{
-FUNCTION_DESCRIPTION
+Conversations API method's required scopes depend on the type
+of channel-like object you're working with.
 }
 \details{
-DETAILS
+To use the method, you'll need at least one of the channels,
+groups, im or mpim scopes corresponding to the conversation
+type you're working with. See \href{https://api.slack.com/methods/conversations.history}{Slack Documentation} for more details.
 }
 \examples{
 \dontrun{
