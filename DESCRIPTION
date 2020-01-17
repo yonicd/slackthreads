@@ -1,0 +1,17 @@
+Type: Package
+Package: threads
+Title: Wrangle Slack conversations in R
+Version: 0.0.1
+Authors@R: person(given = "Jonathan", family = "Sidi", role = c("cre","aut"), email = "yonicd@gmail.com",
+            comment = c(ORCID = "0000-0002-4222-1819"))
+Description: Interact with the Slack API and retrieve conversations for interrogation.
+License: MIT + file LICENSE
+Depends: R (>= 3.2.0)
+Imports: slackteams,httr
+Remotes: yonicd/slackteams
+Suggests: knitr
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
+VignetteBuilder: knitr
