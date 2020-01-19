@@ -34,3 +34,42 @@ get_conversations <- function(...,channel=Sys.getenv("SLACK_CHANNEL"),api_token=
   structure(httr::content(resp),class = c('conversation','list'),channel = channel)
 
 }
+
+#' POST Message Permalink
+#'
+#' Individual messages are indexed by channel and timestamp. This API method
+#' returns a url for the particular message.
+#'
+#' @inheritParams get_conversations
+#' @param timestamp Character (or coercible to character); the timestamp of a
+#'   particular message.
+#'
+#' @return Character; the permalink to that particular message.
+#' @export
+get_permalink <- function(channel = Sys.getenv("SLACK_CHANNEL"),
+                          api_token = Sys.getenv("SLACK_API_TOKEN"),
+                          timestamp) {
+  if ( !is.character(channel) | length(channel) > 1 ) {
+    stop("channel must be a character vector of length one")
+  }
+  if ( !is.character(api_token) | length(api_token) > 1 ) {
+    stop("api_token must be a character vector of length one")
+  }
+
+  chnl_map <- slackteams::get_team_channels()[,c('id','name')]
+  this_chnl <- chnl_map$id[grepl(channel, chnl_map$name)]
+
+  resp <- httr::POST(url = "https://slack.com/api/chat.getPermalink",
+                     body = list(token = api_token,
+                                 channel = this_chnl,
+                                 message_ts = timestamp))
+  # Per https://api.slack.com/methods/chat.getPermalink#rate_limiting, we should
+  # "obey HTTP 429 Too Many Requests status codes."
+  httr::stop_for_status(resp)
+
+  if (is.null(httr::content(resp)$permalink)) {
+    return(NA_character_)
+  } else {
+    return(httr::content(resp)$permalink)
+  }
+}

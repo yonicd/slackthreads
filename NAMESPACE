@@ -3,6 +3,7 @@
 S3method(paginate,conversation)
 S3method(paginate,reply)
 export(get_conversations)
+export(get_permalink)
 export(get_replies)
 export(paginate)
 importFrom(httr,POST)
