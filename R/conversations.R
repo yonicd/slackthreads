@@ -46,9 +46,9 @@ get_conversations <- function(...,channel=Sys.getenv("SLACK_CHANNEL"),api_token=
 #'
 #' @return Character; the permalink to that particular message.
 #' @export
-get_permalink <- function(channel = Sys.getenv("SLACK_CHANNEL"),
-                          api_token = Sys.getenv("SLACK_API_TOKEN"),
-                          timestamp) {
+get_permalink <- function(timestamp,
+                          channel = Sys.getenv("SLACK_CHANNEL"),
+                          api_token = Sys.getenv("SLACK_API_TOKEN")) {
   if ( !is.character(channel) | length(channel) > 1 ) {
     stop("channel must be a character vector of length one")
   }

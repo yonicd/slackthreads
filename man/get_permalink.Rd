@@ -5,18 +5,18 @@
 \title{POST Message Permalink}
 \usage{
 get_permalink(
+  timestamp,
   channel = Sys.getenv("SLACK_CHANNEL"),
-  api_token = Sys.getenv("SLACK_API_TOKEN"),
-  timestamp
+  api_token = Sys.getenv("SLACK_API_TOKEN")
 )
 }
 \arguments{
+\item{timestamp}{Character (or coercible to character); the timestamp of a
+particular message.}
+
 \item{channel}{character, Conversation ID to fetch history for, Default: Sys.getenv("SLACK_CHANNEL")}
 
 \item{api_token}{character, full Slack API token, Default: Sys.getenv("SLACK_API_TOKEN")}
-
-\item{timestamp}{Character (or coercible to character); the timestamp of a
-particular message.}
 }
 \value{
 Character; the permalink to that particular message.
