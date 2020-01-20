@@ -4,25 +4,36 @@
 \alias{get_conversations}
 \title{POST Channel Conversation}
 \usage{
-get_conversations(..., channel = Sys.getenv("SLACK_CHANNEL"),
-  api_token = Sys.getenv("SLACK_API_TOKEN"))
+get_conversations(
+  ...,
+  channel = Sys.getenv("SLACK_CHANNEL"),
+  api_token = Sys.getenv("SLACK_API_TOKEN")
+)
 }
 \arguments{
 \item{...}{arguments to pass to POST call}
 
-\item{channel}{character, Conversation ID to fetch history for, Default: Sys.getenv("SLACK_CHANNEL")}
+\item{channel}{character, channel name to fetch history for, Default:
+\code{Sys.getenv("SLACK_CHANNEL")}}
 
-\item{api_token}{character, full Slack API token, Default: Sys.getenv("SLACK_API_TOKEN")}
+\item{api_token}{character, full Slack API token, Default:
+\code{Sys.getenv("SLACK_API_TOKEN")}}
 }
 \value{
-A \link[httr:response]{response} object containing channel messages with the class "conversation"
+A tibble containing channel messages with the class "conversation"
 }
 \description{
 Conversations API method's required scopes depend on the type
 of channel-like object you're working with.
 }
 \details{
-To use the method, you'll need at least one of the channels,
-groups, im or mpim scopes corresponding to the conversation
-type you're working with. See \href{https://api.slack.com/methods/conversations.history}{Slack Documentation} for more details.
+To use the method, you'll need at least one of the channels, groups,
+im or mpim scopes corresponding to the conversation type you're working
+with. See \href{https://api.slack.com/methods/conversations.history}{Slack Documentation} for
+more details.
+}
+\examples{
+\dontrun{
+convos <- get_conversations(channel = "5_general_r_help", limit = 100)
+}
 }

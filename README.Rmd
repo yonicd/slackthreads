@@ -54,7 +54,9 @@ slackteams::activate_team('r4ds')
 chnls <- slackteams::get_team_channels()
 
  # r4ds has channels to ask questions in
-question_channels <- sort(grep('^[1-9]',chnls$name[chnls$is_channel],value = TRUE))
+question_channels <- sort(
+  grep('^[1-9]', chnls$name[chnls$is_channel], value = TRUE)
+)
 
 question_channels
 ```
@@ -65,51 +67,33 @@ This will retrieve the last 20 messages from each channel
 
 ```{r}
 
-question_channels <- setNames(question_channels,question_channels)
+# question_channels <- setNames(question_channels, question_channels)
 
-convos <- lapply(question_channels,function(chnl){
-  threads::get_conversations(limit = 20, channel = chnl)
-})
-
-```
- 
-Check that request was returned ok and that up to 20 were returned. 
- 
-```{r}
-convos[[1]]$ok
-length(convos[[1]]$messages)
-
+convos <- purrr::map_dfr(
+  question_channels, ~threads::get_conversations(channel = .x, limit = 20)
+) 
+  
+convos
 ```
  
 ### Pagination 
  
-We now use that initial object to retrieve the rest of the channel messages using pagination 
- 
-```{r}
-convo_paginate <- threads::paginate(convos[[1]],limit = 100)
-```
-
-This will return a list of requests where the first element in the root request that returned 20 messages and the subsequent ones contain up to 100 messages
-
-```{r}
-lapply(convo_paginate,function(x) length(x$messages))
-```
+We are in the process of merging pagination into the `get_*` functions. 
 
 ### Messages Replies (Threads)
 
-How many replies were there to this message
+How many replies were there to the first message?
 
 ```{r}
-convos[[1]]$messages[[1]]$reply_count
+convos$reply_count[[1]]
 ```
 
-Retrieve the reply.
+Retrieve that reply.
 
 The first element will be the parent message and the subsequent ones are the messages in the thread.
 
 ```{r}
-reply <- threads::get_replies(convos[[1]]$messages[[1]]$ts,channel = names(convos)[1])
-
+reply <- threads::get_replies(convos$ts[[1]], channel = convos$channel[[1]])
 ```
  
 Check that request was returned ok and how many messages where returned
@@ -118,3 +102,9 @@ Check that request was returned ok and how many messages where returned
 reply$ok
 length(reply$messages)
 ```
+
+## Contributing
+
+Please note that the 'threads' project is released with a
+[Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to abide by its terms.

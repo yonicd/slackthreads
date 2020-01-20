@@ -4,8 +4,12 @@
 \alias{get_replies}
 \title{POST Conversation Thread}
 \usage{
-get_replies(ts, ..., channel = Sys.getenv("SLACK_CHANNEL"),
-  api_token = Sys.getenv("SLACK_API_TOKEN"))
+get_replies(
+  ts,
+  ...,
+  channel = Sys.getenv("SLACK_CHANNEL"),
+  api_token = Sys.getenv("SLACK_API_TOKEN")
+)
 }
 \arguments{
 \item{ts}{character, Unique identifier of a thread's parent message}
