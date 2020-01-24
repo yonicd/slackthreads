@@ -1,14 +1,17 @@
 library(slackteams)
+library(slackcalls)
 library(threads)
 library(magrittr)
-library(ggplot2)
+#library(ggplot2)
 
-source('data-raw/r4ds/tidy_convo.R')
+#source('data-raw/r4ds/tidy_convo.R')
 
 ## Set up Team ----
 
-slackteams::load_teams()
+slackteams::load_team_dcf(team = 'r4ds')
 slackteams::activate_team('r4ds')
+#channels <- slackteams::get_team_channels()
+convo <- threads::conversations(channel = '5_general_r_help',max_results = 350)
 
 ## Locate Mentors ----
 
