@@ -7,6 +7,14 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R-win build
+status](https://github.com/yonicd/threads/workflows/R-win/badge.svg)](https://github.com/yonicd/threads)
+[![R-mac build
+status](https://github.com/yonicd/threads/workflows/R-mac/badge.svg)](https://github.com/yonicd/threads)
+[![R-linux build
+status](https://github.com/yonicd/threads/workflows/R-linux/badge.svg)](https://github.com/yonicd/threads)
+[![Codecov test
+coverage](https://codecov.io/gh/yonicd/threads/branch/master/graph/badge.svg)](https://codecov.io/gh/yonicd/threads?branch=master)
 <!-- badges: end -->
 
 The goal of threads is to interact with the Slack API to retrieve and
@@ -20,11 +28,8 @@ remotes::install_github("yonicd/threads")
 
 ## In the Tin
 
-  - httr call for Slack API
-    [conversation.history](https://api.slack.com/methods/conversations.history)
-  - httr call for Slack API
-    [conversation.replies](https://api.slack.com/methods/conversations.replies)
-  - Pagination Functions
+  - Fetch messages from conversations
+  - Fetch replies in threads to the messages in the conversations
 
 ## Example Using [R4DS Slack](https://www.rfordatasci.com/)
 
@@ -54,80 +59,30 @@ question_channels <- sort(grep('^[1-9]',chnls$name[chnls$is_channel],value = TRU
 question_channels
 #> [1] "1_explore_wrangle"           "2_program"                  
 #> [3] "3_model"                     "4_visualize_ggplot2_rmd_etc"
-#> [5] "5_general_r_help"
+#> [5] "5_general_r_help"            "6_github_open_source"       
+#> [7] "7_spatial"                   "8_statistics"
 ```
 
 ### Retrieve Conversations
 
-This will retrieve the last 20 messages from each channel
+This will retrieve the last 20 messages from the “1\_explore\_wrangle”
+channel.
 
 ``` r
-
-question_channels <- setNames(question_channels,question_channels)
-
-convos <- lapply(question_channels,function(chnl){
-  threads::get_conversations(limit = 20, channel = chnl)
-})
+  
+convos <- threads::conversations(channel = '1_explore_wrangle', limit = 20, max_results = 20)
 ```
 
 Check that request was returned ok and that up to 20 were returned.
 
 ``` r
-convos[[1]]$ok
-#> [1] TRUE
-length(convos[[1]]$messages)
+length(convos)
 #> [1] 20
 ```
 
-### Pagination
-
-We now use that initial object to retrieve the rest of the channel
-messages using pagination
+There are 6 replies to the first message
 
 ``` r
-convo_paginate <- threads::paginate(convos[[1]],limit = 100)
-```
-
-This will return a list of requests where the first element in the root
-request that returned 20 messages and the subsequent ones contain up to
-100 messages
-
-``` r
-lapply(convo_paginate,function(x) length(x$messages))
-#> [[1]]
-#> [1] 20
-#> 
-#> [[2]]
-#> [1] 100
-#> 
-#> [[3]]
-#> [1] 64
-```
-
-### Messages Replies (Threads)
-
-How many replies were there to this message
-
-``` r
-convos[[1]]$messages[[1]]$reply_count
-#> [1] 1
-```
-
-Retrieve the reply.
-
-The first element will be the parent message and the subsequent ones are
-the messages in the
-thread.
-
-``` r
-reply <- threads::get_replies(convos[[1]]$messages[[1]]$ts,channel = names(convos)[1])
-```
-
-Check that request was returned ok and how many messages where returned
-
-``` r
-reply$ok
-#> [1] TRUE
-length(reply$messages)
-#> [1] 2
+convos[[1]]$reply_count
+#> [1] 6
 ```
