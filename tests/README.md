@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-29 January, 2020 03:20:58
+29 January, 2020 03:31:00
 
   - [Coverage](#coverage)
   - [Unit Tests](#unit-tests)
@@ -28,7 +28,7 @@ Unit Test summary is created using the
 
 | file                                                  |  n |  time | error | failed | skipped | warning |
 | :---------------------------------------------------- | -: | ----: | ----: | -----: | ------: | ------: |
-| [test-conversations.R](testthat/test-conversations.R) | 17 | 0.142 |     0 |      0 |       0 |       0 |
+| [test-conversations.R](testthat/test-conversations.R) | 17 | 0.066 |     0 |      0 |       0 |       0 |
 
 <details closed>
 
@@ -36,21 +36,21 @@ Unit Test summary is created using the
 
 | file                                                            | context       | test                                                                 | status | n |  time |
 | :-------------------------------------------------------------- | :------------ | :------------------------------------------------------------------- | :----- | -: | ----: |
-| [test-conversations.R](testthat/test-conversations.R#L26_L29)   | conversations | confirm that our expected channel name still exists: valid channel   | PASS   | 1 | 0.030 |
-| [test-conversations.R](testthat/test-conversations.R#L33_L36)   | conversations | confirm that our expected channel name still exists: invalid channel | PASS   | 1 | 0.017 |
+| [test-conversations.R](testthat/test-conversations.R#L26_L29)   | conversations | confirm that our expected channel name still exists: valid channel   | PASS   | 1 | 0.029 |
+| [test-conversations.R](testthat/test-conversations.R#L33_L36)   | conversations | confirm that our expected channel name still exists: invalid channel | PASS   | 1 | 0.023 |
 | [test-conversations.R](testthat/test-conversations.R#L46)       | conversations | can get conversations: class                                         | PASS   | 1 | 0.001 |
-| [test-conversations.R](testthat/test-conversations.R#L50)       | conversations | can get conversations: length                                        | PASS   | 1 | 0.000 |
+| [test-conversations.R](testthat/test-conversations.R#L50)       | conversations | can get conversations: length                                        | PASS   | 1 | 0.001 |
 | [test-conversations.R](testthat/test-conversations.R#L54_L57)   | conversations | can get conversations: attr channel                                  | PASS   | 1 | 0.001 |
 | [test-conversations.R](testthat/test-conversations.R#L61_L64)   | conversations | can get conversations: element names                                 | PASS   | 1 | 0.002 |
 | [test-conversations.R](testthat/test-conversations.R#L68_L71)   | conversations | can get conversations: result class                                  | PASS   | 1 | 0.001 |
 | [test-conversations.R](testthat/test-conversations.R#L75_L78)   | conversations | can get conversations: element channel                               | PASS   | 1 | 0.001 |
 | [test-conversations.R](testthat/test-conversations.R#L85_L86)   | conversations | can get replies to a conversation: object class                      | PASS   | 1 | 0.000 |
-| [test-conversations.R](testthat/test-conversations.R#L90)       | conversations | can get replies to a conversation: object length                     | PASS   | 1 | 0.001 |
+| [test-conversations.R](testthat/test-conversations.R#L90)       | conversations | can get replies to a conversation: object length                     | PASS   | 1 | 0.000 |
 | [test-conversations.R](testthat/test-conversations.R#L94_L97)   | conversations | can get replies to a conversation: object channel                    | PASS   | 1 | 0.001 |
-| [test-conversations.R](testthat/test-conversations.R#L101_L104) | conversations | can get replies to a conversation: element names                     | PASS   | 1 | 0.084 |
-| [test-conversations.R](testthat/test-conversations.R#L108_L111) | conversations | can get replies to a conversation: element class                     | PASS   | 1 | 0.000 |
+| [test-conversations.R](testthat/test-conversations.R#L101_L104) | conversations | can get replies to a conversation: element names                     | PASS   | 1 | 0.001 |
+| [test-conversations.R](testthat/test-conversations.R#L108_L111) | conversations | can get replies to a conversation: element class                     | PASS   | 1 | 0.001 |
 | [test-conversations.R](testthat/test-conversations.R#L115_L118) | conversations | can get replies to a conversation: element channel                   | PASS   | 1 | 0.001 |
-| [test-conversations.R](testthat/test-conversations.R#L125)      | conversations | conversations and replies fail gracefully: thread length             | PASS   | 1 | 0.000 |
+| [test-conversations.R](testthat/test-conversations.R#L125)      | conversations | conversations and replies fail gracefully: thread length             | PASS   | 1 | 0.001 |
 | [test-conversations.R](testthat/test-conversations.R#L129)      | conversations | conversations and replies fail gracefully: thread class              | PASS   | 1 | 0.001 |
 | [test-conversations.R](testthat/test-conversations.R#L133_L136) | conversations | conversations and replies fail gracefully: thread channel            | PASS   | 1 | 0.001 |
 
@@ -63,7 +63,7 @@ Unit Test summary is created using the
 | Field    | Value                               |                                                                                                                                                                                                                                                                 |
 | :------- | :---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Version  | R version 3.6.2 (2019-12-12)        |                                                                                                                                                                                                                                                                 |
-| Platform | x86\_64-apple-darwin15.6.0 (64-bit) | <a href="https://github.com/yonicd/threads/commit/0797914a2fc02242aea36a6fcb305f0eea254b57/checks" target="_blank"><span title="Built on Github Actions">![](https://github.com/metrumresearchgroup/covrpage/blob/actions/inst/logo/gh.png?raw=true)</span></a> |
+| Platform | x86\_64-apple-darwin15.6.0 (64-bit) | <a href="https://github.com/yonicd/threads/commit/a923c33efe3111aada3ef9f62cb3abac8a182027/checks" target="_blank"><span title="Built on Github Actions">![](https://github.com/metrumresearchgroup/covrpage/blob/actions/inst/logo/gh.png?raw=true)</span></a> |
 | Running  | macOS Catalina 10.15.2              |                                                                                                                                                                                                                                                                 |
 | Language | en\_US                              |                                                                                                                                                                                                                                                                 |
 | Timezone | UTC                                 |                                                                                                                                                                                                                                                                 |
