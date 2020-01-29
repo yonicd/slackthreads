@@ -4,32 +4,21 @@
 \alias{conversations}
 \title{Retrieve Conversations}
 \usage{
-conversations(
-  channel,
-  ...,
-  token = Sys.getenv("SLACK_API_TOKEN"),
-  max_results = Inf,
-  max_calls = Inf,
-  limit = 1000L
-)
+conversations(channel, ..., token = Sys.getenv("SLACK_API_TOKEN"),
+  max_results = Inf, max_calls = Inf, limit = 1000L)
 }
 \arguments{
 \item{channel}{Character. Channel name to retrieve conversation from.}
 
 \item{...}{Arguments to pass to method}
 
-\item{token}{Character. Your Slack API token. Default:
-Sys.getenv("SLACK_API_TOKEN")}
+\item{token}{Character. Your Slack API token. Default: Sys.getenv("SLACK_API_TOKEN")}
 
-\item{max_results}{Integer. The maximum number of results to return (total).
-Note: The actual maximum will be \code{max_results} rounded up to a
-multiple of \code{limit}. Default: Inf}
+\item{max_results}{PARAM_DESCRIPTION, Default: Inf}
 
-\item{max_calls}{Integer. The maximum number of separate API calls to make
-while constructing the response. Default: Inf}
+\item{max_calls}{PARAM_DESCRIPTION, Default: Inf}
 
-\item{limit}{Integer. The number of results to fetch per call. Default:
-1000L}
+\item{limit}{Numeric, maximum number of results per call. Default: 1000L}
 }
 \value{
 A list of channel messages with class "conversations.history".

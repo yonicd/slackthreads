@@ -2,8 +2,8 @@
 #' @description  Retrieve conversations from a channel on a Slack team.
 #' @param channel Character. Channel name to retrieve conversation from.
 #' @param ... Arguments to pass to method
-#' @param token Character. Your Slack API token. Default:
-#'   Sys.getenv("SLACK_API_TOKEN")
+#' @param token Character. Your Slack API token. Default: Sys.getenv("SLACK_API_TOKEN")
+#' @param limit Numeric, maximum number of results per call. Default: 1000L
 #' @inheritParams slackcalls::post_slack
 #' @return A list of channel messages with class "conversations.history".
 #' @details To use the method, you'll need at least one of the channels, groups,
