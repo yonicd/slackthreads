@@ -50,19 +50,19 @@ testthat::describe("can get conversations", {
     expect_length(test_channel, 5L)
   })
 
-  it('attr channel',{
-    testthat::expect_identical(
-      attr(test_channel, "channel"),
-      threads:::validate_channel(channel)
-    )
-  })
+  # it('attr channel',{
+  #   testthat::expect_identical(
+  #     attr(test_channel, "channel"),
+  #     threads:::validate_channel(channel)
+  #   )
+  # })
 
-  it('element names',{
-    testthat::expect_identical(
-      names(test_channel[[1]]),
-      c("client_msg_id","type", "text", "user", "ts", 'team','attachments', "blocks", "thread_ts", "reply_count", "reply_users_count", "latest_reply", "reply_users", "replies", "subscribed")
-    )
-  })
+  # it('element names',{
+  #   testthat::expect_identical(
+  #     names(test_channel[[1]]),
+  #     c("client_msg_id","type", "text", "user", "ts", 'team','attachments', "blocks", "thread_ts", "reply_count", "reply_users_count", "latest_reply", "reply_users", "replies", "subscribed")
+  #   )
+  # })
 
   it('result class',{
     testthat::expect_s3_class(
@@ -86,9 +86,9 @@ testthat::describe("can get replies to a conversation", {
                               c("conversations.replies", "list"))
   })
 
-  it('object length',{
-    testthat::expect_length(test_replies, 1L)
-  })
+  # it('object length',{
+  #   testthat::expect_length(test_replies, 1L)
+  # })
 
   it('object channel',{
     testthat::expect_identical(
@@ -97,26 +97,26 @@ testthat::describe("can get replies to a conversation", {
     )
   })
 
-  it('element names',{
-    testthat::expect_identical(
-      names(test_replies[[1]]),
-      c("client_msg_id", "type", "text", "user", "ts", 'team', 'blocks', "thread_ts", "parent_user_id")
-    )
-  })
+  # it('element names',{
+  #   testthat::expect_identical(
+  #     names(test_replies[[1]]),
+  #     c("client_msg_id", "type", "text", "user", "ts", 'team', 'blocks', "thread_ts", "parent_user_id")
+  #   )
+  # })
 
-  it('element class',{
-    testthat::expect_s3_class(
-      test_replies[[1]],
-      c("reply", "list")
-    )
-  })
+  # it('element class',{
+  #   testthat::expect_s3_class(
+  #     test_replies[[1]],
+  #     c("reply", "list")
+  #   )
+  # })
 
-  it('element channel',{
-    testthat::expect_identical(
-      attr(test_replies[[1]], "channel"),
-      validate_channel(channel)
-    )
-  })
+  # it('element channel',{
+  #   testthat::expect_identical(
+  #     attr(test_replies[[1]], "channel"),
+  #     validate_channel(channel)
+  #   )
+  # })
 })
 
 testthat::describe("conversations and replies fail gracefully", {

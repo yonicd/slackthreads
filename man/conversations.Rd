@@ -14,9 +14,12 @@ conversations(channel, ..., token = Sys.getenv("SLACK_API_TOKEN"),
 
 \item{token}{Character. Your Slack API token. Default: Sys.getenv("SLACK_API_TOKEN")}
 
-\item{max_results}{PARAM_DESCRIPTION, Default: Inf}
+\item{max_results}{Integer. The maximum number of results to return (total).
+Note: The actual maximum will be \code{max_results} rounded up to a
+multiple of \code{limit}. Default: Inf}
 
-\item{max_calls}{PARAM_DESCRIPTION, Default: Inf}
+\item{max_calls}{Integer. The maximum number of separate API calls to make
+while constructing the response. Default: Inf}
 
 \item{limit}{Numeric, maximum number of results per call. Default: 1000L}
 }
