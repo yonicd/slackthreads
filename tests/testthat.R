@@ -1,4 +1,4 @@
 library(testthat)
-library(threads)
+library(slackthreads)
 
-test_check("threads")
+test_check("slackthreads")

@@ -1,5 +1,5 @@
 Type: Package
-Package: threads
+Package: slackthreads
 Title: Wrangle Slack conversations in R
 Version: 0.0.1
 Authors@R: c(
@@ -26,8 +26,8 @@ Suggests:
     testthat (>= 2.1.0)
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/yonicd/threads
-BugReports: https://github.com/yonicd/threads/issues
+URL: https://github.com/yonicd/slackthreads
+BugReports: https://github.com/yonicd/slackthreads/issues
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.0.2
 VignetteBuilder: knitr

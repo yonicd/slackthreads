@@ -53,7 +53,7 @@ testthat::describe("can get conversations", {
   # it('attr channel',{
   #   testthat::expect_identical(
   #     attr(test_channel, "channel"),
-  #     threads:::validate_channel(channel)
+  #     slackthreads:::validate_channel(channel)
   #   )
   # })
 

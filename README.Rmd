@@ -13,34 +13,34 @@ knitr::opts_chunk$set(
 )
 ```
 
-# threads
+# slackthreads
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![R-win build status](https://github.com/yonicd/threads/workflows/R-win/badge.svg)](https://github.com/yonicd/threads)
-[![R-mac build status](https://github.com/yonicd/threads/workflows/R-mac/badge.svg)](https://github.com/yonicd/threads)
-[![R-linux build status](https://github.com/yonicd/threads/workflows/R-linux/badge.svg)](https://github.com/yonicd/threads)
-[![Codecov test coverage](https://codecov.io/gh/yonicd/threads/branch/master/graph/badge.svg)](https://codecov.io/gh/yonicd/threads?branch=master)
+[![R-win build status](https://github.com/yonicd/slackthreads/workflows/R-win/badge.svg)](https://github.com/yonicd/slackthreads)
+[![R-mac build status](https://github.com/yonicd/slackthreads/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackthreads)
+[![R-linux build status](https://github.com/yonicd/slackthreads/workflows/R-linux/badge.svg)](https://github.com/yonicd/slackthreads)
+[![Codecov test coverage](https://codecov.io/gh/yonicd/slackthreads/branch/master/graph/badge.svg)](https://codecov.io/gh/yonicd/slackthreads?branch=master)
 <!-- badges: end -->
 
-The goal of threads is to interact with the Slack API to retrieve and interrogate team conversations.
+The goal of slackthreads is to interact with the Slack API to retrieve and interrogate team conversations.
 
 ## Installation
 
 ``` r
-remotes::install_github("yonicd/threads")
+remotes::install_github("yonicd/slackthreads")
 ```
 
 ## In the Tin
 
   - Fetch messages from conversations
-  - Fetch replies in threads to the messages in the conversations
+  - Fetch replies in slackthreads to the messages in the conversations
 
 ## Example Using [R4DS Slack](https://www.rfordatasci.com/)
 
 ```{r}
 library(slackteams)
-library(threads)
+library(slackthreads)
 
 ```
  
@@ -67,7 +67,7 @@ This will retrieve the last 20 messages from the "1_explore_wrangle" channel.
 
 ```{r}
   
-convos <- threads::conversations(channel = '1_explore_wrangle', limit = 20, max_results = 20)
+convos <- slackthreads::conversations(channel = '1_explore_wrangle', limit = 20, max_results = 20)
 
 ```
  
