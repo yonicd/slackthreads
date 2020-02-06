@@ -68,6 +68,7 @@ conversations <- function(channel,
 #' @rdname replies
 #' @export
 #' @importFrom slackcalls post_slack
+#' @importFrom slackteams validate_channel
 replies <- function(ts,
                     channel,
                     ...,
@@ -76,7 +77,7 @@ replies <- function(ts,
                     max_calls = Inf,
                     limit = 1000L) {
 
-  channel <- validate_channel(channel)
+  channel <- slackteams::validate_channel(channel)
 
   res <- slackcalls::post_slack(
     slack_method = 'conversations.replies',
