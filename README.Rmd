@@ -23,7 +23,24 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/yonicd/slackthreads/branch/master/graph/badge.svg)](https://codecov.io/gh/yonicd/slackthreads?branch=master)
 <!-- badges: end -->
 
-The goal of slackthreads is to interact with the Slack API to retrieve and interrogate team conversations.
+`slackthreads` is a part of `slackverse`
+
+```{r,echo = FALSE, eval = TRUE}
+pkgs <- sprintf('slack%s',c('calls','teams','blocks','threads','reprex'))
+
+badges <- sprintf('%s<br>[![](https://github.com/yonicd/%s/workflows/R-mac/badge.svg)](https://github.com/yonicd/%s)',pkgs,pkgs,pkgs)
+
+names(badges) <- pkgs
+
+```
+
+||||
+|:-:|:-:|:-:|
+||`r badges[pkgs[1]]`<br>`r emo::ji('down_left_arrow')``r emo::ji('down_arrow')``r emo::ji('down_right_arrow')`||
+|`r badges[pkgs[4]]`|`r badges[pkgs[2]]`<br>`r emo::ji('left_arrow')``r emo::ji('right_arrow')`|`r badges[pkgs[3]]`<br>`r emo::ji('down_arrow')`|
+|||`r badges[pkgs[5]]`|
+
+The goal of `slackthreads` is to interact with the Slack API to retrieve and interrogate team conversations.
 
 ## Installation
 

@@ -17,7 +17,15 @@ status](https://github.com/yonicd/slackthreads/workflows/R-linux/badge.svg)](htt
 coverage](https://codecov.io/gh/yonicd/slackthreads/branch/master/graph/badge.svg)](https://codecov.io/gh/yonicd/slackthreads?branch=master)
 <!-- badges: end -->
 
-The goal of slackthreads is to interact with the Slack API to retrieve
+`slackthreads` is a part of `slackverse`
+
+|                                                                                                                                 |                                                                                                                                     |                                                                                                                                    |
+| :-----------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------: |
+|                                                                                                                                 | slackcalls<br>[![](https://github.com/yonicd/slackcalls/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackcalls)<br>↙️⬇️↘️ |                                                                                                                                    |
+| slackthreads<br>[![](https://github.com/yonicd/slackthreads/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackthreads) |  slackteams<br>[![](https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackteams)<br>⬅️➡️  | slackblocks<br>[![](https://github.com/yonicd/slackblocks/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackblocks)<br>⬇️ |
+|                                                                                                                                 |                                                                                                                                     |    slackreprex<br>[![](https://github.com/yonicd/slackreprex/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackreprex)    |
+
+The goal of `slackthreads` is to interact with the Slack API to retrieve
 and interrogate team conversations.
 
 ## Installation
@@ -43,7 +51,7 @@ library(slackthreads)
 ``` r
 slackteams::load_teams()
 #> The following teams are loaded:
-#>   slackr, r4ds
+#>   yonihuji, slackr, ropensci, r4ds
 slackteams::activate_team('r4ds')
 #> slackr environment variables are set to 'r4ds' supplied definitions
 ```
@@ -80,9 +88,9 @@ length(convos)
 #> [1] 20
 ```
 
-There are 17 replies to the first message
+There are 2 replies to the first message
 
 ``` r
 convos[[1]]$reply_count
-#> [1] 17
+#> [1] 2
 ```
