@@ -58,5 +58,5 @@ jobs:
           --data '{
             "title": "Revdep Fail: ${{ github.repository }}",
             "body": "The Reverse Dependency ${{ github.repository }} of ${{ github.event.client_payload.repository }} has broken due to the commit ${{ github.event.client_payload.sha }}",
-            "label" = "revdep breaking"
+            "label" : ["revdep breaking"]
             }'
