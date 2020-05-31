@@ -34,11 +34,17 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
 
+      - name: Cache R packages
+        uses: actions/cache@v1
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{ hashFiles('DESCRIPTION') }}
+
       - name: Run Check
         run: |
             Rscript -e "install.packages('remotes')" \
+                    -e "remotes::install_deps(dependencies = TRUE)" \
                     -e "remotes::install_github('${{ github.event.client_payload.repository }}@${{ github.event.client_payload.sha }}', force = TRUE)" \
-                    -e  "remotes::install_deps(dependencies = TRUE)" \
                     -e "remotes::install_cran('rcmdcheck')" \
                     -e "rcmdcheck::rcmdcheck(args = '${{ matrix.config.args }}', error_on = 'warning', check_dir = 'check')"
 
