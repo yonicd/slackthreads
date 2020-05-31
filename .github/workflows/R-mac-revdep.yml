@@ -34,12 +34,6 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
 
-      - name: Cache R packages
-        uses: actions/cache@v1
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{ hashFiles('DESCRIPTION') }}
-
       - name: Run Check
         run: |
             Rscript -e "install.packages('remotes')" \
