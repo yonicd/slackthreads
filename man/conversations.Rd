@@ -4,8 +4,14 @@
 \alias{conversations}
 \title{Retrieve Conversations}
 \usage{
-conversations(channel, ..., token = Sys.getenv("SLACK_API_TOKEN"),
-  max_results = Inf, max_calls = Inf, limit = 1000L)
+conversations(
+  channel,
+  ...,
+  token = Sys.getenv("SLACK_API_TOKEN"),
+  max_results = Inf,
+  max_calls = Inf,
+  limit = 1000L
+)
 }
 \arguments{
 \item{channel}{Character. Channel name to retrieve conversation from.}

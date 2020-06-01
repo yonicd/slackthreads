@@ -5,12 +5,24 @@
 \alias{conversation_replies}
 \title{Retrieve Replies}
 \usage{
-replies(ts, channel, ..., token = Sys.getenv("SLACK_API_TOKEN"),
-  max_results = Inf, max_calls = Inf, limit = 1000L)
+replies(
+  ts,
+  channel,
+  ...,
+  token = Sys.getenv("SLACK_API_TOKEN"),
+  max_results = Inf,
+  max_calls = Inf,
+  limit = 1000L
+)
 
-conversation_replies(conversation, ...,
-  token = Sys.getenv("SLACK_API_TOKEN"), max_results = Inf,
-  max_calls = Inf, limit = 1000L)
+conversation_replies(
+  conversation,
+  ...,
+  token = Sys.getenv("SLACK_API_TOKEN"),
+  max_results = Inf,
+  max_calls = Inf,
+  limit = 1000L
+)
 }
 \arguments{
 \item{ts}{Character. Unique identifier of a thread's parent message.}

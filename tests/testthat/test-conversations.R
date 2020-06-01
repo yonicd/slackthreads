@@ -9,7 +9,7 @@ write.dcf(data.frame(
 
 slackteams::load_team_dcf('r4ds',file = tf)
 slackteams::activate_team('r4ds')
-channel <- "5_general_r_help"
+channel <- "help-8-general"
 
 test_channel <- conversations(channel = channel, limit = 5, max_results = 5)
 test_conversations <- conversations(channel = channel, limit = 1, max_results = 5)
