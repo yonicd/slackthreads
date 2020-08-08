@@ -51,7 +51,7 @@ library(slackthreads)
 ``` r
 slackteams::load_teams()
 #> The following teams are loaded:
-#>   yonihuji, slackr, ropensci, r4ds
+#>   r4ds
 slackteams::activate_team('r4ds')
 #> slackr environment variables are set to 'r4ds' supplied definitions
 ```
@@ -65,20 +65,17 @@ chnls <- slackteams::get_team_channels()
 question_channels <- sort(grep('^[1-9]',chnls$name[chnls$is_channel],value = TRUE))
 
 question_channels
-#> [1] "1_explore_wrangle"           "2_program"                  
-#> [3] "3_model"                     "4_visualize_ggplot2_rmd_etc"
-#> [5] "5_general_r_help"            "6_github_open_source"       
-#> [7] "7_spatial"                   "8_statistics"
+#> character(0)
 ```
 
 ### Retrieve Conversations
 
-This will retrieve the last 20 messages from the “1\_explore\_wrangle”
-channel.
+This will retrieve the last 20 messages from the
+“help-1-explore\_wrangle” channel.
 
 ``` r
   
-convos <- slackthreads::conversations(channel = '1_explore_wrangle', limit = 20, max_results = 20)
+convos <- slackthreads::conversations(channel = 'help-1-explore_wrangle', limit = 20, max_results = 20)
 ```
 
 Check that request was returned ok and that up to 20 were returned.
@@ -88,9 +85,9 @@ length(convos)
 #> [1] 20
 ```
 
-There are 2 replies to the first message
+There are 4 replies to the first message
 
 ``` r
 convos[[1]]$reply_count
-#> [1] 2
+#> [1] 4
 ```
