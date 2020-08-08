@@ -80,11 +80,11 @@ question_channels
  
 ### Retrieve Conversations 
 
-This will retrieve the last 20 messages from the "1_explore_wrangle" channel.
+This will retrieve the last 20 messages from the "help-1-explore_wrangle" channel.
 
 ```{r}
   
-convos <- slackthreads::conversations(channel = '1_explore_wrangle', limit = 20, max_results = 20)
+convos <- slackthreads::conversations(channel = 'help-1-explore_wrangle', limit = 20, max_results = 20)
 
 ```
  
