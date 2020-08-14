@@ -19,7 +19,7 @@ Imports:
     slackteams,
     slackcalls
 Remotes: 
-    yonicd/slackteams, 
+    yonicd/slackteams@ee8e387, 
     yonicd/slackcalls
 Suggests: 
     knitr,
