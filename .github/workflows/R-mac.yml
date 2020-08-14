@@ -1,4 +1,4 @@
-on: [push, pull_request]
+on: [push]
 
 name: R-mac
 
@@ -17,9 +17,9 @@ jobs:
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       CRAN: ${{ matrix.config.cran }}
-      GITHUB_PAT: ${{ secrets.GH_PAT }}
       SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
       SLACK_SKIPLOAD: ${{ secrets.SLACK_SKIPLOAD }}
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
     steps:
       - uses: actions/checkout@master
@@ -33,41 +33,21 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
 
-      - name: Query dependencies
-        run: |
-          # getting dev remotes for better behaviour re: installation order
-          install.packages("https://github.com/r-lib/remotes/archive/master.tar.gz", repos = NULL)
-          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
-        shell: Rscript {0}
-
       - name: Cache R packages
         uses: actions/cache@v1
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ matrix.config.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ matrix.config.os }}-r-${{ matrix.config.r }}-1-
+          key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{ hashFiles('DESCRIPTION') }}
 
       - name: Install dependencies
-        run: |
-          remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran('rcmdcheck')
-        shell: Rscript {0}
+        run: Rscript -e "install.packages('remotes')" -e "remotes::install_deps(dependencies = TRUE)" -e "remotes::install_cran('rcmdcheck')"
 
       - name: Check
-        run: Rscript -e "rcmdcheck::rcmdcheck(args = '${{ matrix.config.args }}', error_on = 'warning', check_dir = 'check')"
+        run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "warning", check_dir = "check")
+        shell: Rscript {0}
 
       - name: covr
         run: |
-          Rscript -e 'remotes::install_github("r-lib/covr@gh-actions")' \
-                  -e 'covr::codecov(token = "${{secrets.CODECOV_TOKEN}}")'
-
-      - name: Install package
-        run: R CMD INSTALL .
-
-      - name: covrpage
-        if: github.ref == 'refs/heads/master'
-        run: |
-          Rscript -e 'remotes::install_github("yonicd/covrpage@actions")' \
-                  -e 'covrpage::covrpage_ci()'
-          git commit tests/README.md -m 'Update tests/README.Rmd' || echo "No changes to commit"
-          git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo "No changes to commit"
+          remotes::install_github("r-lib/covr")
+          covr::codecov()
+        shell: Rscript {0}
