@@ -3,5 +3,6 @@
 export(conversation_replies)
 export(conversations)
 export(replies)
+importFrom(slackcalls,parse_call)
 importFrom(slackcalls,post_slack)
 importFrom(slackteams,validate_channel)

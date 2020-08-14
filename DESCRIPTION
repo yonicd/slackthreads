@@ -1,7 +1,7 @@
 Type: Package
 Package: slackthreads
 Title: Wrangle Slack conversations in R
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: c(
     person(
       "Jonathan", "Sidi", role = c("cre","aut"), email = "yonicd@gmail.com", 
@@ -29,5 +29,5 @@ LazyData: true
 URL: https://github.com/yonicd/slackthreads
 BugReports: https://github.com/yonicd/slackthreads/issues
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr
