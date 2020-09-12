@@ -22,7 +22,9 @@ conversations <- function(channel,
                           max_calls = Inf,
                           limit = 1000L) {
 
-  channel <- validate_channel(channel)
+  if(require(slackteams)){
+    channel <- slackteams::validate_channel(channel)
+  }
 
   res <- get_conversations_history(
     max_results = max_results,
@@ -66,7 +68,6 @@ conversations <- function(channel,
 #' @rdname replies
 #' @export
 #' @importFrom slackcalls post_slack
-#' @importFrom slackteams validate_channel
 replies <- function(ts,
                     channel,
                     ...,
@@ -75,7 +76,9 @@ replies <- function(ts,
                     max_calls = Inf,
                     limit = 1000L) {
 
-  channel <- slackteams::validate_channel(channel)
+  if(require(slackteams)){
+    channel <- slackteams::validate_channel(channel)
+  }
 
   res <- slackcalls::post_slack(
     slack_method = 'conversations.replies',

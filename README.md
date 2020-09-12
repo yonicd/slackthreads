@@ -19,12 +19,12 @@ coverage](https://codecov.io/gh/yonicd/slackthreads/branch/master/graph/badge.sv
 
 `slackthreads` is a part of `slackverse`
 
-|                                                                                                                                 |                                                                                                                                     |                                                                                                                                    |
-| :-----------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------: |
-|                                                                                                                                 | slackcalls<br>[![](https://github.com/yonicd/slackcalls/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackcalls)<br>↙️⬇️↘️ |                                                                                                                                    |
-| slackthreads<br>[![](https://github.com/yonicd/slackthreads/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackthreads) |  slackteams<br>[![](https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackteams)<br>⬅️↘️  |  slackposts<br>[![](https://github.com/yonicd/slackposts/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackposts)<br>⬇️   |
-|                                                                                                                                 |                                                                                                                                     | slackblocks<br>[![](https://github.com/yonicd/slackblocks/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackblocks)<br>⬇️ |
-|                                                                                                                                 |                                                                                                                                     |    slackreprex<br>[![](https://github.com/yonicd/slackreprex/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackreprex)    |
+|                                                                                                                                 |                                                                                                                           |                                                                                                                              |
+| :-----------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------: |
+|                                                                                                                                 | slackcalls<br>[![](https://github.com/yonicd/slackcalls/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackcalls) |                                                                                                                              |
+| slackthreads<br>[![](https://github.com/yonicd/slackthreads/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackthreads) | slackteams<br>[![](https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackteams) |  slackposts<br>[![](https://github.com/yonicd/slackposts/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackposts)   |
+|                                                                                                                                 |                                                                                                                           | slackblocks<br>[![](https://github.com/yonicd/slackblocks/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackblocks) |
+|                                                                                                                                 |                                                                                                                           | slackreprex<br>[![](https://github.com/yonicd/slackreprex/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackreprex) |
 
 The goal of `slackthreads` is to interact with the Slack API to retrieve
 and interrogate team conversations.
@@ -51,7 +51,7 @@ library(slackthreads)
 
 ``` r
 slackteams::load_teams()
-slackteams::activate_team('r4ds')
+slackteams::activate_team('R4ds')
 ```
 
 ### Retrieve Team Channels
@@ -60,7 +60,7 @@ slackteams::activate_team('r4ds')
 chnls <- slackteams::get_team_channels()
 
  # r4ds has channels to ask questions in
-question_channels <- sort(grep('^help',chnls$name[chnls$is_channel],value = TRUE))
+question_channels <- grep('^help-',chnls$name,value = TRUE)
 
 question_channels
 ```
@@ -72,7 +72,11 @@ This will retrieve the last 20 messages from the
 
 ``` r
   
-convos <- slackthreads::conversations(channel = 'help-1-explore_wrangle', limit = 20, max_results = 20)
+convos <- conversations(
+  channel = 'help-1-explore_wrangle', 
+  limit = 20, 
+  max_results = 20
+)
 ```
 
 Check that request was returned ok and that up to 20 were returned.

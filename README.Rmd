@@ -37,9 +37,9 @@ names(badges) <- pkgs
 
 ||||
 |:-:|:-:|:-:|
-||`r badges[pkgs[1]]`<br>`r emo::ji('down_left_arrow')``r emo::ji('down_arrow')``r emo::ji('down_right_arrow')`||
-|`r badges[pkgs[5]]`|`r badges[pkgs[2]]`<br>`r emo::ji('left_arrow')``r emo::ji('down_right_arrow')`|`r badges[pkgs[3]]`<br>`r emo::ji('down_arrow')`|
-|||`r badges[pkgs[4]]`<br>`r emo::ji('down_arrow')`|
+||`r badges[pkgs[1]]`||
+|`r badges[pkgs[5]]`|`r badges[pkgs[2]]`|`r badges[pkgs[3]]`|
+|||`r badges[pkgs[4]]`|
 |||`r badges[pkgs[6]]`|
 
 The goal of `slackthreads` is to interact with the Slack API to retrieve and interrogate team conversations.
@@ -66,7 +66,7 @@ library(slackthreads)
 ### Load the Team 
 ```{r}
 slackteams::load_teams()
-slackteams::activate_team('r4ds')
+slackteams::activate_team('R4ds')
 ```
  
 ### Retrieve Team Channels 
@@ -75,7 +75,7 @@ slackteams::activate_team('r4ds')
 chnls <- slackteams::get_team_channels()
 
  # r4ds has channels to ask questions in
-question_channels <- sort(grep('^help',chnls$name[chnls$is_channel],value = TRUE))
+question_channels <- grep('^help-',chnls$name,value = TRUE)
 
 question_channels
 ```
@@ -86,7 +86,11 @@ This will retrieve the last 20 messages from the "help-1-explore_wrangle" channe
 
 ```{r}
   
-convos <- slackthreads::conversations(channel = 'help-1-explore_wrangle', limit = 20, max_results = 20)
+convos <- conversations(
+  channel = 'help-1-explore_wrangle', 
+  limit = 20, 
+  max_results = 20
+)
 
 ```
  
