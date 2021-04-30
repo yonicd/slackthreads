@@ -22,4 +22,4 @@ jobs:
     steps:
     - shell: bash
       run: |
-        echo "$SUPER_SECRET"
+        echo "$env:SUPER_SECRET"
