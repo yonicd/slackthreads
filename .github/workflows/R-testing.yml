@@ -20,6 +20,12 @@ jobs:
     env:
       SUPER_SECRET: "testing"
     steps:
-    - shell: bash
-      run: |
-        echo "$SUPER_SECRET"
+    - uses: r-lib/actions/setup-r@master
+        with:
+          r-version: '4.0'
+
+      - name: Simple R Command
+        run: |
+          token <- Sys.getenv('SUPER_SECRET')
+          print(token)
+        shell: Rscript {0}
