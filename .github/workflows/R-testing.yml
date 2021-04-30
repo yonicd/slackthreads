@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
     env:
-      SUPER_SECRET: ${{ secrets.SuperSecret }}
+      SUPER_SECRET: ${{ secrets.SUPERSECRET }}
     steps:
     - shell: bash
       run: |
