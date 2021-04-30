@@ -1,25 +1,22 @@
 testthat::context('conversations')
 
 token <- Sys.getenv('SLACK_API_TOKEN')
-if (nchar(token) < 6) {
-  stop("Token length: ", nchar(token))
-} else {
-  stop("Token starts with ", substr(token, 1, 6))
+if (nchar(token)) {
+  info <- slackteams:::get_team_info(token = Sys.getenv('SLACK_API_TOKEN'))
+  slackteams::add_team(info$team$name,Sys.getenv('SLACK_API_TOKEN'))
+  slackteams::activate_team('slackr')
+  channel <- "CNTFB9215"
+
+  test_channel <- conversations(channel = channel, limit = 5, max_results = 5)
+  test_conversations <- conversations(channel = channel, limit = 1, max_results = 5)
+  test_replies <- conversation_replies(test_conversations[[1]])
+  test_empty_thread <- replies(ts = "1569458224.000500", channel = channel)
 }
-
-info <- slackteams:::get_team_info(token = Sys.getenv('SLACK_API_TOKEN'))
-slackteams::add_team(info$team$name,Sys.getenv('SLACK_API_TOKEN'))
-slackteams::activate_team('slackr')
-channel <- "CNTFB9215"
-
-test_channel <- conversations(channel = channel, limit = 5, max_results = 5)
-test_conversations <- conversations(channel = channel, limit = 1, max_results = 5)
-test_replies <- conversation_replies(test_conversations[[1]])
-test_empty_thread <- replies(ts = "1569458224.000500", channel = channel)
 
 testthat::describe("can get conversations", {
   # All of the specific parameters are tested in slackteams, so we just need to
   # make sure the function returns what we expect.
+  testthat::skip_if_not(nchar(token), "No API token.")
 
   it('class',{
     expect_s3_class(test_channel, c("conversations.history", "list"))
@@ -45,6 +42,7 @@ testthat::describe("can get conversations", {
 })
 
 testthat::describe("can get replies to a conversation", {
+  testthat::skip_if_not(nchar(token), "No API token.")
 
   it('object class',{
     testthat::expect_s3_class(test_replies,
