@@ -20,7 +20,7 @@ jobs:
         config:
         - { os: macOS-latest, r: '4.0', args: "--no-manual"}
     env:
-      SUPER_SECRET: ${{ secrets.SLACK_API_TOKEN }}
+      SUPER_SECRET: ${{ secrets.SUPERSECRET }}
     steps:
       - uses: r-lib/actions/setup-r@master
         with:
