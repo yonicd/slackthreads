@@ -18,8 +18,8 @@ jobs:
     strategy:
       fail-fast: false
     env:
-      SUPER_SECRET: ${{ secrets.SLACK_API_TOKEN }}
+      SUPER_SECRET: "testing"
     steps:
     - shell: bash
       run: |
-        echo "$env:SUPER_SECRET"
+        echo "$SUPER_SECRET"
