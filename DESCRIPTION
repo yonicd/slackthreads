@@ -16,7 +16,9 @@ Description: Interact with the Slack API and retrieve conversations for interrog
 License: MIT + file LICENSE
 Depends: R (>= 3.5.0)
 Imports: slackcalls
-Remotes: yonicd/slackcalls,yonicd/slackteams
+Remotes: 
+    yonicd/slackcalls,
+    yonicd/slackteams
 Suggests: 
     slackteams,
     knitr,
