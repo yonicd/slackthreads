@@ -8,7 +8,6 @@ on:
       - main
       - master
 
-
 name: Check PR ENV
 
 jobs:
@@ -21,7 +20,7 @@ jobs:
         config:
         - { os: macOS-latest, r: '4.0', args: "--no-manual"}
     env:
-      SUPER_SECRET: "testing"
+      SUPER_SECRET: ${{ secrets.SLACK_API_TOKEN }}
     steps:
       - uses: r-lib/actions/setup-r@master
         with:
