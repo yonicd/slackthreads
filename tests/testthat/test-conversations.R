@@ -1,5 +1,12 @@
 testthat::context('conversations')
 
+token <- Sys.getenv('SLACK_API_TOKEN')
+if (nchar(token) < 6) {
+  stop("Token length: ", nchar(token))
+} else {
+  stop("Token starts with ", substr(token, 1, 6))
+}
+
 info <- slackteams:::get_team_info(token = Sys.getenv('SLACK_API_TOKEN'))
 slackteams::add_team(info$team$name,Sys.getenv('SLACK_API_TOKEN'))
 slackteams::activate_team('slackr')
