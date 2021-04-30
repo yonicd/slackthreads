@@ -4,7 +4,7 @@ Title: Wrangle Slack conversations in R
 Version: 0.1.0
 Authors@R: c(
     person(
-      "Jonathan", "Sidi", role = c("cre","aut"), email = "yonicd@gmail.com", 
+      "Jonathan", "Sidi", role = c("cre", "aut"), email = "yonicd@gmail.com", 
       comment = c(ORCID = "0000-0002-4222-1819")
     ),
     person(
