@@ -12,14 +12,14 @@ on:
 name: Check PR ENV
 
 jobs:
-  render:
+  check:
     name: Check Env
     runs-on:  ubuntu-18.04
     strategy:
       fail-fast: false
     env:
       SUPER_SECRET: ${{ secrets.SuperSecret }}
-  steps:
+    steps:
     - shell: bash
       run: |
-        example-command "$SUPER_SECRET"
+        echo "$SUPER_SECRET"
