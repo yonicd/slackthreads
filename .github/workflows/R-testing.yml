@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+
+name: Check PR ENV
+
+jobs:
+  render:
+    name: Check Env
+    runs-on:  ubuntu-18.04
+    strategy:
+      fail-fast: false
+    env:
+      SUPER_SECRET: ${{ secrets.SuperSecret }}
+  steps:
+    - shell: bash
+      run: |
+        example-command "$SUPER_SECRET"
