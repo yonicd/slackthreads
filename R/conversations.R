@@ -15,7 +15,6 @@
 #'   more details on the arguments that the method can recieve in \dots.
 #' @rdname conversations
 #' @export
-#' @importFrom slackcalls post_slack
 conversations <- function(channel,
                           ...,
                           token = Sys.getenv("SLACK_API_TOKEN"),
@@ -23,16 +22,17 @@ conversations <- function(channel,
                           max_calls = Inf,
                           limit = 1000L) {
 
-  channel <- validate_channel(channel)
-  res <- slackcalls::post_slack(
-    slack_method = 'conversations.history',
+  if(require(slackteams)){
+    channel <- slackteams::validate_channel(channel)
+  }
+
+  res <- get_conversations_history(
     max_results = max_results,
     max_calls = max_calls,
     channel = channel,
     token = token,
     limit = limit,
-    ...
-  )
+    ...)
 
   if (is.null(res$messages)) {
     # I don't know of a way that this can happen, but this is here in case.
@@ -68,7 +68,6 @@ conversations <- function(channel,
 #' @rdname replies
 #' @export
 #' @importFrom slackcalls post_slack
-#' @importFrom slackteams validate_channel
 replies <- function(ts,
                     channel,
                     ...,
@@ -77,7 +76,9 @@ replies <- function(ts,
                     max_calls = Inf,
                     limit = 1000L) {
 
-  channel <- slackteams::validate_channel(channel)
+  if(require(slackteams)){
+    channel <- slackteams::validate_channel(channel)
+  }
 
   res <- slackcalls::post_slack(
     slack_method = 'conversations.replies',
