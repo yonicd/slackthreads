@@ -23,14 +23,14 @@ jobs:
       GITHUB_PAT: ${{ secrets.GH_PAT }}
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
 
-      - uses: r-lib/actions/setup-tinytex@master
+      - uses: r-lib/actions/setup-tinytex@main
         if: contains(matrix.config.args, 'no-manual') == false
 
-      - uses: r-lib/actions/setup-pandoc@master
+      - uses: r-lib/actions/setup-pandoc@main
 
-      - uses: r-lib/actions/setup-r@master
+      - uses: r-lib/actions/setup-r@main
         with:
           r-version: ${{ matrix.config.r }}
 
