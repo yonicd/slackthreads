@@ -83,7 +83,7 @@ replies <- function(ts,
   # If they're sending us thread_ts and it doesn't exist in this case, there
   # isn't a conversation to return.
   if (is.null(ts)) {
-    empty_reply(channel)
+    return(empty_reply(channel))
   }
 
   res <- slackcalls::post_slack(
