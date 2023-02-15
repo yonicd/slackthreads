@@ -9,6 +9,7 @@ test_channel <- conversations(channel = channel, limit = 5, max_results = 5)
 test_conversations <- conversations(channel = channel, limit = 1, max_results = 5)
 test_replies <- conversation_replies(test_conversations[[1]])
 test_empty_thread <- replies(ts = "1569458224.000500", channel = channel)
+test_all_replies <- all_conversation_replies(test_conversations)
 
 testthat::describe("can get conversations", {
   # All of the specific parameters are tested in slackteams, so we just need to
@@ -50,6 +51,17 @@ testthat::describe("can get replies to a conversation", {
       channel
     )
   })
+})
+
+testthat::describe("can get all replies to a set of conversations", {
+
+  it('returns the expected shape of object', {
+    testthat::expect_type(test_all_replies, "list")
+    testthat::expect_length(test_all_replies, length(test_conversations))
+    testthat::expect_identical(test_all_replies[[1]], test_replies)
+  })
+
+})
 
 testthat::describe("conversations and replies fail gracefully", {
 
@@ -67,7 +79,5 @@ testthat::describe("conversations and replies fail gracefully", {
       channel
     )
   })
-
-})
 
 })

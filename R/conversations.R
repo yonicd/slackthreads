@@ -80,6 +80,12 @@ replies <- function(ts,
     channel <- slackteams::validate_channel(channel)
   }
 
+  # If they're sending us thread_ts and it doesn't exist in this case, there
+  # isn't a conversation to return.
+  if (is.null(ts)) {
+    empty_reply(channel)
+  }
+
   res <- slackcalls::post_slack(
     slack_method = 'conversations.replies',
     max_results = max_results,
@@ -98,11 +104,7 @@ replies <- function(ts,
   if (is.null(messages)) {
     # I don't know of a way that this can happen, but this is here in case.
     # nocov start
-    structure(
-      list(0),
-      class = c("conversations.replies", "list"),
-      channel = channel
-    )
+    empty_reply(channel)
     # nocov end
   } else {
     # Add a class to each message and a channel attribute.
@@ -133,12 +135,45 @@ conversation_replies <- function(conversation,
                                  max_calls = Inf,
                                  limit = 1000L) {
   replies(
-    ts = conversation$ts,
+    ts = conversation$thread_ts,
     channel = attr(conversation, "channel"),
     ...,
     token = token,
     max_results = max_results,
     max_calls = max_calls,
     limit = limit
+  )
+}
+
+#' @title Retrieve All Replies
+#' @description  Retrieve replies to all conversations from a channel on a Slack
+#'   team.
+#' @inheritParams conversations
+#' @param conversations The list returned by \code{\link{conversations}}.
+#'
+#' @return A nested list the same length as conversations. Each element of the
+#'   list is an individual return from
+#' @export
+all_conversation_replies <- function(conversations,
+                                     ...,
+                                     token = Sys.getenv("SLACK_API_TOKEN"),
+                                     max_results = Inf,
+                                     max_calls = Inf,
+                                     limit = 1000L) {
+  lapply(
+    conversations,
+    conversation_replies,
+    token = token,
+    max_results = max_results,
+    max_calls = max_calls,
+    limit = limit
+  )
+}
+
+empty_reply <- function(channel) {
+  structure(
+    list(0),
+    class = c("conversations.replies", "list"),
+    channel = channel
   )
 }
