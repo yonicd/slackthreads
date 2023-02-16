@@ -4,3 +4,5 @@
 ^data-raw$
 ^codecov\.yml$
 ^\.github$
+^slackthreads\.Rproj$
+^.Renviron$
