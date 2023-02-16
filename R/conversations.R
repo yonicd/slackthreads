@@ -22,7 +22,8 @@ conversations <- function(channel,
                           max_calls = Inf,
                           limit = 1000L) {
 
-  if (require(slackteams) && slackteams::has_active_team()) {
+  if (requireNamespace("slackteams", quietly = TRUE) &&
+      slackteams::has_active_team()) {
     channel <- slackteams::validate_channel(channel)
   }
 
@@ -76,7 +77,8 @@ replies <- function(ts,
                     max_calls = Inf,
                     limit = 1000L) {
 
-  if (require(slackteams) && slackteams::has_active_team()) {
+  if (requireNamespace("slackteams", quietly = TRUE) &&
+      slackteams::has_active_team()) {
     channel <- slackteams::validate_channel(channel)
   }
 
