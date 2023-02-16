@@ -50,8 +50,5 @@ jobs:
         shell: Rscript {0}
 
       - name: covr
-        run: |
-          install.packages("remotes")
-          remotes::install_github("r-lib/covr")
-          covr::codecov()
+        run: covr::package_coverage()
         shell: Rscript {0}

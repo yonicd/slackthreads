@@ -18,6 +18,7 @@ Depends: R (>= 3.5.0)
 Imports: slackcalls
 Remotes: yonicd/slackcalls,yonicd/slackteams
 Suggests: 
+    covr,
     knitr,
     slackteams,
     testthat (>= 2.1.0)
