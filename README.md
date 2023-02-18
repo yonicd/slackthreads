@@ -7,24 +7,21 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![R-win build
-status](https://github.com/yonicd/slackthreads/workflows/R-win/badge.svg)](https://github.com/yonicd/slackthreads)
-[![R-mac build
-status](https://github.com/yonicd/slackthreads/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackthreads)
-[![R-linux build
-status](https://github.com/yonicd/slackthreads/workflows/R-linux/badge.svg)](https://github.com/yonicd/slackthreads)
+[![Covrpage
+Summary](https://img.shields.io/badge/covrpage-Last_Build_2023_02_18-brightgreen.svg)](http://tinyurl.com/ux5kpl9)
+[![R-CMD-check](https://github.com/yonicd/slackthreads/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/yonicd/slackthreads/actions/workflows/r-cmd-check.yml)
 [![Codecov test
 coverage](https://codecov.io/gh/yonicd/slackthreads/branch/master/graph/badge.svg)](https://codecov.io/gh/yonicd/slackthreads?branch=master)
 <!-- badges: end -->
 
 `slackthreads` is a part of `slackverse`
 
-|                                                                                                                                 |                                                                                                                           |                                                                                                                              |
-| :-----------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------: |
-|                                                                                                                                 | slackcalls<br>[![](https://github.com/yonicd/slackcalls/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackcalls) |                                                                                                                              |
-| slackthreads<br>[![](https://github.com/yonicd/slackthreads/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackthreads) | slackteams<br>[![](https://github.com/yonicd/slackteams/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackteams) |  slackposts<br>[![](https://github.com/yonicd/slackposts/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackposts)   |
-|                                                                                                                                 |                                                                                                                           | slackblocks<br>[![](https://github.com/yonicd/slackblocks/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackblocks) |
-|                                                                                                                                 |                                                                                                                           | slackreprex<br>[![](https://github.com/yonicd/slackreprex/workflows/R-mac/badge.svg)](https://github.com/yonicd/slackreprex) |
+|                                                                                                                                                   |                                                                                                                                             |                                                                                                                                                |
+|:-------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------:|
+|                                                                                                                                                   | slackcalls<br>[![](https://github.com/yonicd/slackcalls/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/yonicd/slackcalls) |                                                                                                                                                |
+| slackthreads<br>[![](https://github.com/yonicd/slackthreads/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/yonicd/slackthreads) | slackteams<br>[![](https://github.com/yonicd/slackteams/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/yonicd/slackteams) |  slackposts<br>[![](https://github.com/yonicd/slackposts/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/yonicd/slackposts)   |
+|                                                                                                                                                   |                                                                                                                                             | slackblocks<br>[![](https://github.com/yonicd/slackblocks/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/yonicd/slackblocks) |
+|                                                                                                                                                   |                                                                                                                                             | slackreprex<br>[![](https://github.com/yonicd/slackreprex/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/yonicd/slackreprex) |
 
 The goal of `slackthreads` is to interact with the Slack API to retrieve
 and interrogate team conversations.
@@ -37,8 +34,8 @@ remotes::install_github("yonicd/slackthreads")
 
 ## In the Tin
 
-  - Fetch messages from conversations
-  - Fetch replies in slackthreads to the messages in the conversations
+- Fetch messages from conversations
+- Fetch replies in slackthreads to the messages in the conversations
 
 ## Example Using [R4DS Slack](https://www.rfordatasci.com/)
 
@@ -68,7 +65,7 @@ question_channels
 ### Retrieve Conversations
 
 This will retrieve the last 20 messages from the
-“help-1-explore\_wrangle” channel.
+“help-1-explore_wrangle” channel.
 
 ``` r
   

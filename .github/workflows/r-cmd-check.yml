@@ -1,9 +1,11 @@
 on:
+  push:
+    branches: [main, master]
   pull_request:
     branches: [main, master]
   workflow_dispatch:
 
-name: pr-checks
+name: R-CMD-check
 
 jobs:
   check:
@@ -14,13 +16,18 @@ jobs:
       fail-fast: false
       matrix:
         config:
+          - {os: macOS-latest,   r: 'release'}
+          - {os: windows-latest, r: 'release'}
+          - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest,   r: 'release'}
+          - {os: ubuntu-latest,   r: 'oldrel-1'}
 
     env:
       R_KEEP_PKG_SOURCE: yes
       SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
       SLACK_SKIPLOAD: true
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      SLACK_API_TEST_MODE: false
 
     steps:
       - uses: actions/checkout@main
@@ -46,7 +53,3 @@ jobs:
       - uses: r-lib/actions/check-r-package@v2
         with:
           upload-snapshots: true
-
-      - name: covr
-        run: covr::package_coverage()
-        shell: Rscript {0}

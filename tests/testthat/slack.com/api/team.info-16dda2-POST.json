@@ -1,0 +1,22 @@
+{
+    "ok": true,
+    "team": {
+        "id": "TNE5M7UGK",
+        "name": "slackr",
+        "url": "https://slackr-test.slack.com/",
+        "domain": "slackr-test",
+        "email_domain": "",
+        "icon": {
+            "image_default": true,
+            "image_34": "https://a.slack-edge.com/80588/img/avatars-teams/ava_0019-34.png",
+            "image_44": "https://a.slack-edge.com/80588/img/avatars-teams/ava_0019-44.png",
+            "image_68": "https://a.slack-edge.com/80588/img/avatars-teams/ava_0019-68.png",
+            "image_88": "https://a.slack-edge.com/80588/img/avatars-teams/ava_0019-88.png",
+            "image_102": "https://a.slack-edge.com/80588/img/avatars-teams/ava_0019-102.png",
+            "image_230": "https://a.slack-edge.com/80588/img/avatars-teams/ava_0019-230.png",
+            "image_132": "https://a.slack-edge.com/80588/img/avatars-teams/ava_0019-132.png"
+        },
+        "avatar_base_url": "https://ca.slack-edge.com/",
+        "is_verified": false
+    }
+}
