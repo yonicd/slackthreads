@@ -22,7 +22,8 @@ Suggests:
     httptest,
     knitr,
     slackteams,
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    withr
 VignetteBuilder: 
     knitr
 Remotes: 
