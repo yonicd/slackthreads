@@ -126,6 +126,15 @@ test_that("Can get all replies at once to a set of conversations", {
   expect_s3_class(test_all_replies, c("channel.replies", "list"))
   expect_length(test_all_replies, length(test_conversations))
   expect_identical(test_all_replies[[1]], test_replies)
+
+  # Make sure others come back empty.
+  test_empty_thread <- test_all_replies[[2]]
+  expect_length(test_empty_thread, 0L)
+  expect_s3_class(test_empty_thread, c("conversations.replies", "list"))
+  expect_identical(
+    attr(test_empty_thread, "channel"),
+    slack_test_channel
+  )
 })
 
 test_that("Conversations and replies fail gracefully", {

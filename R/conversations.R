@@ -180,7 +180,7 @@ all_conversation_replies <- function(conversations,
 
 empty_reply <- function(channel) {
   structure(
-    list(0),
+    list(),
     class = c("conversations.replies", "list"),
     channel = channel
   )
