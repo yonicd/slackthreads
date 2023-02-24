@@ -117,7 +117,13 @@ test_that("Can get all replies at once to a set of conversations", {
     NA
   )
 
-  expect_type(test_all_replies, "list")
+  # The block_id isn't stable. As far as I can tell, the API is being weird
+  # about this, and it isn't important, so let's ignore it. It's weird that this
+  # WAS working, though.
+  test_replies[[1]]$blocks[[1]]$block_id <- NULL
+  test_all_replies[[1]][[1]]$blocks[[1]]$block_id <- NULL
+
+  expect_s3_class(test_all_replies, c("channel.replies", "list"))
   expect_length(test_all_replies, length(test_conversations))
   expect_identical(test_all_replies[[1]], test_replies)
 })

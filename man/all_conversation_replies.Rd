@@ -30,8 +30,9 @@ while constructing the response. Default: Inf}
 \item{limit}{Numeric, maximum number of results per call. Default: 1000L}
 }
 \value{
-A nested list the same length as conversations. Each element of the
-list is an individual return from
+A nested list with additional class "channel.replies". The return has
+the same length as conversations. Each element of the list is an individual
+return from \code{\link{conversation_replies}}.
 }
 \description{
 Retrieve replies to all conversations from a channel on a Slack
