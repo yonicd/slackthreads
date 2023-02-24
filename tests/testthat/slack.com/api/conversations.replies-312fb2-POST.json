@@ -1,0 +1,95 @@
+{
+    "ok": true,
+    "messages": [
+        {
+            "bot_id": "B018QG52ZEH",
+            "type": "message",
+            "text": "20",
+            "user": "UNTFB8LTH",
+            "ts": "1677187904.258169",
+            "app_id": "AV8AWRPT4",
+            "blocks": [
+                {
+                    "type": "rich_text",
+                    "block_id": "Qv71",
+                    "elements": [
+                        {
+                            "type": "rich_text_section",
+                            "elements": [
+                                {
+                                    "type": "text",
+                                    "text": "20"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "team": "TNE5M7UGK",
+            "bot_profile": {
+                "id": "B018QG52ZEH",
+                "deleted": false,
+                "name": "slackteams",
+                "updated": 1597276144,
+                "app_id": "AV8AWRPT4",
+                "icons": {
+                    "image_36": "https://a.slack-edge.com/80588/img/plugins/app/bot_36.png",
+                    "image_48": "https://a.slack-edge.com/80588/img/plugins/app/bot_48.png",
+                    "image_72": "https://a.slack-edge.com/80588/img/plugins/app/service_72.png"
+                },
+                "team_id": "TNE5M7UGK"
+            },
+            "thread_ts": "1677187904.258169",
+            "reply_count": 1,
+            "reply_users_count": 1,
+            "latest_reply": "1677187904.359009",
+            "reply_users": [
+                "UNTFB8LTH"
+            ],
+            "is_locked": false,
+            "subscribed": false
+        },
+        {
+            "bot_id": "B018QG52ZEH",
+            "type": "message",
+            "text": "this is a reply",
+            "user": "UNTFB8LTH",
+            "ts": "1677187904.359009",
+            "app_id": "AV8AWRPT4",
+            "blocks": [
+                {
+                    "type": "rich_text",
+                    "block_id": "1ZQ",
+                    "elements": [
+                        {
+                            "type": "rich_text_section",
+                            "elements": [
+                                {
+                                    "type": "text",
+                                    "text": "this is a reply"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "team": "TNE5M7UGK",
+            "bot_profile": {
+                "id": "B018QG52ZEH",
+                "app_id": "AV8AWRPT4",
+                "name": "slackteams",
+                "icons": {
+                    "image_36": "https://a.slack-edge.com/80588/img/plugins/app/bot_36.png",
+                    "image_48": "https://a.slack-edge.com/80588/img/plugins/app/bot_48.png",
+                    "image_72": "https://a.slack-edge.com/80588/img/plugins/app/service_72.png"
+                },
+                "deleted": false,
+                "updated": 1597276144,
+                "team_id": "TNE5M7UGK"
+            },
+            "thread_ts": "1677187904.258169",
+            "parent_user_id": "UNTFB8LTH"
+        }
+    ],
+    "has_more": false
+}

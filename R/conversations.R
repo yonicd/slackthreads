@@ -153,8 +153,9 @@ conversation_replies <- function(conversation,
 #' @inheritParams conversations
 #' @param conversations The list returned by \code{\link{conversations}}.
 #'
-#' @return A nested list the same length as conversations. Each element of the
-#'   list is an individual return from
+#' @return A nested list with additional class "channel.replies". The return has
+#'   the same length as conversations. Each element of the list is an individual
+#'   return from \code{\link{conversation_replies}}.
 #' @export
 all_conversation_replies <- function(conversations,
                                      ...,
@@ -162,13 +163,18 @@ all_conversation_replies <- function(conversations,
                                      max_results = Inf,
                                      max_calls = Inf,
                                      limit = 1000L) {
-  lapply(
+  all_replies <- lapply(
     conversations,
     conversation_replies,
     token = token,
     max_results = max_results,
     max_calls = max_calls,
     limit = limit
+  )
+  structure(
+    all_replies,
+    class = c("channel.replies", "list"),
+    channel = attr(conversations, "channel")
   )
 }
 
