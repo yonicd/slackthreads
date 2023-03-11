@@ -8,7 +8,7 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Covrpage
-Summary](https://img.shields.io/badge/covrpage-Last_Build_2023_02_27-brightgreen.svg)](https://tinyurl.com/2mtuu5gu)
+Summary](https://img.shields.io/badge/covrpage-Last_Build_2023_03_11-brightgreen.svg)](https://tinyurl.com/2mtuu5gu)
 [![R-CMD-check](https://github.com/yonicd/slackthreads/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/yonicd/slackthreads/actions/workflows/r-cmd-check.yml)
 [![Codecov test
 coverage](https://codecov.io/gh/yonicd/slackthreads/branch/master/graph/badge.svg)](https://codecov.io/gh/yonicd/slackthreads?branch=master)
